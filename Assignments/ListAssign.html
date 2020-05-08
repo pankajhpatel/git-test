@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Maths Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p id="para"></p>
+<div class="container">
+  <h1 id="header">List  Operation </h1>
+  <p>Adding Text to List and Displaying  Itn</p>
+   <div class="form-group">
+   <label for="mrk1">Enter Value</label>
+   <input type="text" class="form-control" id="num" >
+   </div>
+    <button type="buttom" id="btnResult" onclick="addvalue()" class="btn btn-primary" >Add</button>
+    <p id="demo">Result</p>
+   </div>
+
+<script>
+   var list=[];    
+   function addvalue(){
+   let number = document.getElementById("num").value;
+   list.push(number);
+  // alert(list);
+   text="";  
+   for (i = 0; i < list.length ;i++) {
+      text +="*"+ list[i]+"<br>";
+   }
+  // alert(text);
+   document.getElementById("demo").innerHTML =text;
+}     
+</script>
+</body>
+</html>

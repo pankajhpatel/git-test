@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="header">Align Text </h1>
+  <p>The form below contains  text input box to manipulate toatal, percentage and grade from subject of marks input</p>
+      
+    <button type="buttom" id="btnResult" onclick="alignLeft()" class="btn btn-primary" >Left</button>
+    <button type="button"  onclick="alignCenter()"class="btn btn-secondary">Center</button>
+    <button type="button"  onclick="alignRight()"class="btn btn-success">Right</button>
+    <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" onclick="red()" name="colradio">RED
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" onclick="green()"name="colradio">GREEN
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" onclick="blue()" name="colradio" >BLUE
+        </label>
+      </div>
+      <div class="form-check">
+        <label for="sel1">Select fONT size:</label>
+        <select class="form-control" id="sel1" onchange="h1fontsize()">
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          <option>40</option>
+          <option>50</option>
+        </select>
+      </div>
+
+</div>
+<script>
+    function alignLeft(){
+        let h1 = document.getElementById("header");
+        let fontSize = document.getElementById("sel1").value;
+        h1.innerHTML="THIS TEXT IS ALIGN LEFT";
+        h1.style.textAlign="left";
+        h1.style.fontSize= fontSize;
+   //   alert(fontSize);
+    }
+    
+    function alignCenter(){
+        let h1 = document.getElementById("header");
+        let fontSize = document.getElementById("sel1").value;
+        h1.innerHTML="THIS TEXT IS ALIGN CENTER";
+        h1.style.textAlign="center";
+    }
+
+    function alignRight(){
+        let h1 = document.getElementById("header");
+        let fontSize = document.getElementById("sel1").value;
+        h1.innerHTML="THIS TEXT IS ALIGN RIGHT";
+        h1.style.textAlign="right";
+    }
+    
+    function red(){
+        let h1 = document.getElementById("header");
+        h1.style.color="red";
+        
+    }
+    function blue(){
+        let h1 = document.getElementById("header");
+        h1.style.color="blue";
+        
+    }
+    function green(){
+        let h1 = document.getElementById("header");
+        h1.style.color="green";
+        
+    }
+    function h1fontsize(){
+        let h1 = document.getElementById("header");
+        let fntSize = document.getElementById("sel1").value;
+        h1.style.fontSize= fntSize +"px";
+        alert(fntsize);
+    }
+    
+</script>
+</body>
+</html>
