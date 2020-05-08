@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Button Styles</h2>
+  <!-- <button type="button" class="btn">Basic</button>-->
+<button type="button" class="btn btn-primary" onclick="displayPost()">Post</button>
+  <button type="button" class="btn btn-secondary" onclick="displayComments()">Comments</button>
+  <button type="button" class="btn btn-success" onclick="displayAlbums()">Albums</button>
+  <button type="button" class="btn btn-info"onclick="displayPhotos()">Photo</button>
+  <!--<button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-link">Link</button>      -->
+  <br>
+  <br>
+  <div id="dt">  
+   </div>
+</div>
+<script>
+ function displayPost(){
+    let request = new XMLHttpRequest();
+    request.open('GET','https://jsonplaceholder.typicode.com/posts');
+    request.onreadystatechange=function(){
+        if (request.readyState===4 && request.status===200){
+        //console.log(request.responseText); 
+        let items = JSON.parse(request.responseText);
+        console.log(items);
+        let str ="<table class=\"table\"\><thead\><tr\><th>Title</th\><th>Body</th\></tr\></thead\><tbody>";
+        for(let i=0;i<items.length;i++){
+        str = str + "<tr><td>"
+        str = str + items[i].title +"</td><td>"+ items[i].body+"</td></tr>"
+        }
+        str=str+"</tr></table>";
+        document.getElementById("dt").innerHTML =str
+        console.log(str);
+        }
+    }
+    request.send();
+}
+function displayComments(){
+    let request = new XMLHttpRequest();
+    request.open('GET','https://jsonplaceholder.typicode.com/comments');
+    request.onreadystatechange=function(){
+        if (request.readyState===4 && request.status===200){
+        console.log(request.responseText); 
+        let items = JSON.parse(request.responseText);
+        console.log(items);
+        let str ="<table class=\"table\"\><thead\><tr\><th>Name</th\><th>Email</th\><th>Body</th\></tr\></thead\><tbody>"
+        for(let i=0;i<items.length;i++){
+            str = str + "<tr><td>";
+             str = str + items[i].name+"</td><td>"+items[i].email+"</td><td>"+items[i].body +"</td></tr>"
+        }
+        str=str+"</tr></tbody></table>"
+       document.getElementById("dt").innerHTML =str
+        }
+    }
+    request.send();
+}
+function displayAlbums(){
+    let request = new XMLHttpRequest();
+    request.open('GET','https://jsonplaceholder.typicode.com/albums');
+    request.onreadystatechange=function(){
+        if (request.readyState===4 && request.status===200){
+        console.log(request.responseText); 
+        let items = JSON.parse(request.responseText);
+        console.log(items);
+        let str ="<table class=\"table\"\><thead\><tr\><th>Title</th\></tr\></thead\><tbody>"
+        for(let i=0;i<items.length;i++){
+        str = str + "<tr><td>"
+        str = str + items[i].title +"</td><td>"
+        }
+        str=str+"</tr></tbody></table>"
+        document.getElementById("dt").innerHTML =str
+        }
+    }
+    request.send();
+}
+function displayPhotos(){
+    let request = new XMLHttpRequest();
+    request.open('GET','https://jsonplaceholder.typicode.com/photos');
+    request.onreadystatechange=function(){
+        if (request.readyState===4 && request.status===200){
+        console.log(request.responseText); 
+        let items = JSON.parse(request.responseText);
+        console.log(items);
+        let str ="<table class=\"table\"\><thead\><tr\><th>Title</th\><th>Url</th\><th>ThumbNailUrl</th\></tr\></thead\><tbody>"
+        for(let i=0;i<items.length;i++){
+            str = str + "<tr><td>";
+            let tumbImgUrl = "<img src=\""+items[i].thumbnailUrl+ "\"alt=\"Smiley face\" height=\"42\" width=\"42\"\>"
+           // str = str + items[i].title+"</td><td>"+items[i].url+"</td><td>"+items[i].thumbnailUrl +"</td></tr>"
+            str = str + items[i].title+"</td><td>"+items[i].url+"</td><td>"+tumbImgUrl +"</td></tr>"
+        
+        }
+        str=str+"</tr></tbody></table>"
+        //for(let i=0;i<items.length;i++){
+        //str = str + "<li>"
+        //str = str + items[i].title+" , "+items[i].url+" , "+items[i].thumbnailUrl +"</li>"
+       
+        str=str+"</tr></tbody></table>"
+        document.getElementById("dt").innerHTML =str
+        }
+    }
+    request.send();
+}
+
+</script>
+
+</body>
+</html>
