@@ -1,0 +1,3 @@
+this is test file2 
+This is edited from GITHUB Editor
+Edited from Notepad in Local Git
